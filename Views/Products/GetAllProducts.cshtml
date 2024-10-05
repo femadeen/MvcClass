@@ -1,0 +1,35 @@
+﻿@using FirstMvcProject.Models.Entities
+@model IEnumerable<Product>
+
+<h2>Products</h2>
+<p>
+    <a asp-action="CreateProduct" asp-controller="Products" class="btn btn-primary">Create New Product</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Stock</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <th>Description</th>
+                <td>@product.Stock</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Products" asp-route-id="@product.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="GetProduct" asp-controller="Products" asp-route-id="@product.Id" class="btn btn-sm btn-info">Get product detail</a>
+                    <a asp-action="Delete" asp-controller="Products" asp-route-id="@product.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
